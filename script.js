@@ -285,22 +285,23 @@ function checkGameStatus() {
 
 function gameWon() {
     gameState.gameActive = false;
-    
+
+    let winner;
+
     if (gameState.currentPlayer === 1) {
-        gameState.player2.score += 10;
-        document.getElementById('score2').textContent = gameState.player2.score;
-    } else {
         gameState.player1.score += 10;
         document.getElementById('score1').textContent = gameState.player1.score;
+        winner = gameState.player1.name;
+    } else {
+        gameState.player2.score += 10;
+        document.getElementById('score2').textContent = gameState.player2.score;
+        winner = gameState.player2.name;
     }
-    
+
     const statusDiv = document.getElementById('gameStatus');
     const statusMsg = document.getElementById('statusMessage');
-    
-    const winnerName = gameState.currentPlayer === 1 ? 
-        gameState.player2.name : gameState.player1.name;
-    
-    statusMsg.textContent = `🎉 ${winnerName} won! The word was: ${gameState.currentWord}`;
+
+    statusMsg.textContent = `🎉 ${winner} won! The word was: ${gameState.currentWord}`;
     statusDiv.classList.add('show', 'winner');
 }
 
@@ -317,4 +318,5 @@ function gameLost() {
     statusDiv.classList.add('show', 'loser');
     
     gameState.currentPlayer = gameState.currentPlayer === 1 ? 2 : 1;
+    updateCurrentPlayer();
 }
