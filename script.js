@@ -26,8 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function toggleTheme() {
     const themeIcon = document.querySelector('.theme-icon');
-    
-    if (themeIcon.textContent === '🌙') {
+
+    // Toggle the class on body
+    document.body.classList.toggle('dark-mode');
+
+    // Change icon based on mode
+    if (document.body.classList.contains('dark-mode')) {
         themeIcon.textContent = '☀️';
     } else {
         themeIcon.textContent = '🌙';
