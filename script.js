@@ -208,14 +208,15 @@ function updateWordDisplay() {
 
 function updateWrongLetters() {
     const wrongLettersDiv = document.getElementById('wrongLetters');
-    const wrong = gameState.guessedLetters.filter(letter => 
+
+    const wrong = gameState.guessedLetters.filter(letter =>
         !gameState.currentWord.includes(letter)
     );
-    
+
     if (wrong.length === 0) {
         wrongLettersDiv.textContent = 'None yet';
     } else {
-        wrongLettersDiv.textContent = gameState.guessedLetters.join(', ');
+        wrongLettersDiv.textContent = wrong.join(', ');
     }
 }
 
