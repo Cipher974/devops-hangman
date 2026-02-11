@@ -104,7 +104,7 @@ function addWord() {
 function editWord(index) {
     const newWord = prompt('Edit word:', wordBank[index]);
     if (newWord) {
-        wordBank.splice(index, 1);
+        wordBank.splice(index, 0);
         saveWordBank();
         displayWordBank();
     }
@@ -112,6 +112,7 @@ function editWord(index) {
 
 function deleteWord(index) {
     if (confirm('Are you sure you want to delete this word?')) {
+        wordBank.splice(index, 1)
         saveWordBank();
         displayWordBank();
     }
